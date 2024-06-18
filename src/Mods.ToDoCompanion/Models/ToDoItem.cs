@@ -1,17 +1,3 @@
-﻿using StardewValley;
-using System;
+﻿namespace StardewCompanion.Mods.ToDoCompanion.Models;
 
-namespace StardewCompanions.Mods.ToDoCompanion.Models;
-
-internal sealed class ToDoItem
-{
-    public string ItemId { get; set; }
-    public string Name { get; set; }
-    public int Stack { get; set; }
-    public bool Completed { get; set; }
-
-    internal static object From(Item x)
-    {
-        throw new NotImplementedException();
-    }
-}
+public sealed record ToDoItem(string Id, string Name, int Stack, bool Completed);

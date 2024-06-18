@@ -4,16 +4,16 @@ using StardewValley;
 using StardewValley.Menus;
 using System;
 
-namespace StardewCompanions.Mods.ToDoCompanion.Menus;
+namespace StardewCompanion.Mods.ToDoCompanion.Menus;
 
-internal sealed class ToDoListMenu : IClickableMenu, IDisposable
+internal sealed class MainMenu : IClickableMenu, IDisposable
 {
     private readonly IMonitor _monitor;
 
     private const int MINIMUM_WIDTH = 800;
     private const int MINIMUM_HEIGHT = 400;
 
-    public ToDoListMenu(
+    public MainMenu(
         IMonitor monitor)
         : base(
             (Game1.viewport.Width - MINIMUM_WIDTH) / 2,

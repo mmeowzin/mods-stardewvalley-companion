@@ -5,11 +5,23 @@ VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{332F0DC3-8849-4AB4-A7B1-A290C8AB31A1}"
 	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
 		docs\code-snippets.txt = docs\code-snippets.txt
+		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mods.ToDoCompanion", "src\Mods.ToDoCompanion\Mods.ToDoCompanion.csproj", "{17962FE4-CF29-4EBD-932F-AF186167B5AE}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17962FE4-CF29-4EBD-932F-AF186167B5AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17962FE4-CF29-4EBD-932F-AF186167B5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17962FE4-CF29-4EBD-932F-AF186167B5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17962FE4-CF29-4EBD-932F-AF186167B5AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

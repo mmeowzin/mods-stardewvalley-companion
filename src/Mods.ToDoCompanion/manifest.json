@@ -1,10 +1,10 @@
 {
-    "Name": "StardewCompanion.ToDoList",
+    "Name": "StardewCompanion.ToDoCompanion",
     "Author": "mmeowzin",
     "Version": "0.0.1",
     "Description": "A full to do list with groups, automatic notifications e customization. Part of the Stardew Companion Suite.",
-    "UniqueID": "mmeowzin.StardewCompanion.ToDoList",
-    "EntryDll": "StardewCompanion.Mods.ToDoList.dll",
-    "MinimumApiVersion": "3.0.0",
+    "UniqueID": "mmeowzin.StardewCompanion.ToDoCompanion",
+    "EntryDll": "StardewCompanion.Mods.ToDoCompanion.dll",
+    "MinimumApiVersion": "4.0.0",
     "UpdateKeys": []
 }

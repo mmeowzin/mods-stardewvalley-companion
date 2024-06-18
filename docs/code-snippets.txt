@@ -1,18 +1,50 @@
 // draw
-//drawTextureBox(b, Game1.menuTexture, new Rectangle(0, 256, 60, 60), xPositionOnScreen, yPositionOnScreen + 38, width, height, Color.White, 1f, true);
+drawTextureBox(b, Game1.menuTexture, new Rectangle(0, 256, 60, 60), xPositionOnScreen, yPositionOnScreen + 38, width, height, Color.White, 1f, true);
 
-//        drawMouse(b);
+        drawMouse(b);
 
-//var textbox = new TextBox(Game1.content.Load<Texture2D>("LooseSprites\\textBox"), null, Game1.smallFont, Game1.textColor)
-//{
-//    X = xPositionOnScreen + 20,
-//    Y = yPositionOnScreen + 40,
-//    Width = 400,
-//    Height = 192,
-//    Text = ""
-//};
+var textbox = new TextBox(Game1.content.Load<Texture2D>("LooseSprites\\textBox"), null, Game1.smallFont, Game1.textColor)
+{
+    X = xPositionOnScreen + 20,
+    Y = yPositionOnScreen + 40,
+    Width = 400,
+    Height = 192,
+    Text = ""
+};
 
-//SpriteText.drawString(b, "One label", xPositionOnScreen + 20, yPositionOnScreen + 10);
-//        textbox.Draw(b, false);
+SpriteText.drawString(b, "One label", xPositionOnScreen + 20, yPositionOnScreen + 10);
+        textbox.Draw(b, false);
 
-//        // Game1.keyboardDispatcher.Subscriber = textbox;
+        // Game1.keyboardDispatcher.Subscriber = textbox;
+
+
+// something
+private void Input_ButtonPressed(object sender, StardewModdingAPI.Events.ButtonPressedEventArgs e)
+{
+    if (!Context.IsWorldReady)
+        return;
+
+    if (e.Button == SButton.P && Game1.activeClickableMenu == null)
+        Game1.activeClickableMenu = new MainMenu(Monitor);
+}
+
+private void Player_InventoryChanged(object sender, StardewModdingAPI.Events.InventoryChangedEventArgs e)
+{
+    ToDoList.Items.AddRange(e.Added.Select(x => new EntryItem
+    {
+        ItemId = x.ItemId,
+        Name = x.Name,
+        Stack = x.Stack
+    }));
+
+    Models.EntryItem current = default;
+    foreach (var item in e.QuantityChanged)
+    {
+        current = ToDoList.Items.Find(x => x.ItemId == item.Item.ItemId);
+
+        if (current != default)
+        {
+            current.Stack = item.NewSize;
+        }
+    }
+}

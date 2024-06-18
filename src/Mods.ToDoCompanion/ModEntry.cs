@@ -1,48 +1,40 @@
-﻿using StardewCompanions.Mods.ToDoCompanion.Menus;
-using StardewCompanions.Mods.ToDoCompanion.Models;
+﻿using StardewCompanion.Mods.ToDoCompanion.Configuration;
+using StardewCompanion.Mods.ToDoCompanion.Events.GameLoop;
+using StardewCompanion.Mods.ToDoCompanion.Events.Input;
+using StardewCompanion.Mods.ToDoCompanion.Events.Player;
+using StardewCompanion.Mods.ToDoCompanion.Models;
 using StardewModdingAPI;
-using StardewValley;
-using System.Linq;
+using StardewModdingAPI.Events;
 
-namespace StardewCompanions.Mods.ToDoCompanion;
+namespace StardewCompanion.Mods.ToDoCompanion;
 
 internal sealed class ModEntry : Mod
 {
-    private readonly ToDoList ToDoList = new();
+    public ModConfiguration Configuration { get; private set; }
+    public ToDoInstance Instance { get; private set; }
 
     public override void Entry(IModHelper helper)
     {
-        helper.Events.Input.ButtonPressed += Input_ButtonPressed;
-        helper.Events.Player.InventoryChanged += Player_InventoryChanged;
-    }
+        LoadEntryConfiguration();
 
-    private void Player_InventoryChanged(object sender, StardewModdingAPI.Events.InventoryChangedEventArgs e)
-    {
-        ToDoList.Items.AddRange(e.Added.Select(x => new ToDoItem
+        ConfigureEventHandlers();
+
+        void LoadEntryConfiguration()
         {
-            ItemId = x.ItemId,
-            Name = x.Name,
-            Stack = x.Stack
-        }));
+            Configuration = helper.ReadConfig<ModConfiguration>();
+        }
 
-        ToDoItem current = default;
-        foreach (var item in e.QuantityChanged)
+        void ConfigureEventHandlers()
         {
-            current = ToDoList.Items.Find(x => x.ItemId == item.Item.ItemId);
-
-            if (current != default)
-            {
-                current.Stack = item.NewSize;
-            }
+            helper.Events.GameLoop.Saving += GameLoop_Saving;
+            helper.Events.GameLoop.SaveLoaded += GameLoop_SaveLoaded;
+            helper.Events.Player.InventoryChanged += Player_InventoryChanged;
+            helper.Events.Input.ButtonPressed += Input_ButtonPressed;
         }
     }
 
-    private void Input_ButtonPressed(object sender, StardewModdingAPI.Events.ButtonPressedEventArgs e)
-    {
-        if (!Context.IsWorldReady)
-            return;
-
-        if (e.Button == SButton.P && Game1.activeClickableMenu == null)
-            Game1.activeClickableMenu = new ToDoListMenu(Monitor);
-    }
+    private void GameLoop_Saving(object sender, SavingEventArgs e) => SavingEvent.Handle(this);
+    private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e) => Instance = SaveLoadedEvent.Handle(this);
+    private void Player_InventoryChanged(object sender, InventoryChangedEventArgs e) => InventoryChangedEvent.Handle(this);
+    private void Input_ButtonPressed(object sender, ButtonPressedEventArgs e) => ButtonPressedEvent.Handle(this, e);
 }

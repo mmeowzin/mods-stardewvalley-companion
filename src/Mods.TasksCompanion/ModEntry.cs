@@ -1,17 +1,19 @@
-﻿using StardewCompanion.Mods.ToDoCompanion.Configuration;
-using StardewCompanion.Mods.ToDoCompanion.Events.GameLoop;
-using StardewCompanion.Mods.ToDoCompanion.Events.Input;
-using StardewCompanion.Mods.ToDoCompanion.Events.Player;
-using StardewCompanion.Mods.ToDoCompanion.Models;
+﻿using StardewCompanion.Mods.TasksCompanion.Events.GameLoop;
+using StardewCompanion.Mods.TasksCompanion.Events.Input;
+using StardewCompanion.Mods.TasksCompanion.Events.Player;
+using StardewCompanion.Mods.TasksCompanion.Models.Configuration;
+using StardewCompanion.Mods.TasksCompanion.Models.Tasks;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 
-namespace StardewCompanion.Mods.ToDoCompanion;
+namespace StardewCompanion.Mods.TasksCompanion;
 
 internal sealed class ModEntry : Mod
 {
+    private readonly bool _trace = false;
+
     public ModConfiguration Configuration { get; private set; }
-    public ToDoInstance Instance { get; private set; }
+    public PlayerTasks PlayerTasks { get; set; }
 
     public override void Entry(IModHelper helper)
     {
@@ -34,7 +36,17 @@ internal sealed class ModEntry : Mod
     }
 
     private void GameLoop_Saving(object sender, SavingEventArgs e) => SavingEvent.Handle(this);
-    private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e) => Instance = SaveLoadedEvent.Handle(this);
-    private void Player_InventoryChanged(object sender, InventoryChangedEventArgs e) => InventoryChangedEvent.Handle(this);
+    private void GameLoop_SaveLoaded(object sender, SaveLoadedEventArgs e) => SaveLoadedEvent.Handle(this);
+    private void Player_InventoryChanged(object sender, InventoryChangedEventArgs e) => InventoryChangedEvent.Handle(this, e);
     private void Input_ButtonPressed(object sender, ButtonPressedEventArgs e) => ButtonPressedEvent.Handle(this, e);
+
+    public void Trace(string message, object data = null)
+    {
+        if (!_trace)
+            return;
+
+        Monitor.Log(
+            data == null ? message : new LogMessage(message, data).ToString(),
+            LogLevel.Trace);
+    }
 }

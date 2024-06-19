@@ -4,7 +4,7 @@ using StardewValley;
 using StardewValley.Menus;
 using System;
 
-namespace StardewCompanion.Mods.ToDoCompanion.Menus;
+namespace StardewCompanion.Mods.TasksCompanion.Menus;
 
 internal sealed class MainMenu : IClickableMenu, IDisposable
 {

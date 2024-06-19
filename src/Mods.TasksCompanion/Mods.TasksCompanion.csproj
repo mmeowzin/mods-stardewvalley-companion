@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <AssemblyName>StardewCompanion.Mods.ToDoCompanion</AssemblyName>
-        <RootNamespace>StardewCompanion.Mods.ToDoCompanion</RootNamespace>
+        <AssemblyName>StardewCompanion.Mods.TasksCompanion</AssemblyName>
+        <RootNamespace>StardewCompanion.Mods.TasksCompanion</RootNamespace>
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>disable</Nullable>
     </PropertyGroup>

@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mods.ToDoCompanion", "src\Mods.ToDoCompanion\Mods.ToDoCompanion.csproj", "{17962FE4-CF29-4EBD-932F-AF186167B5AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mods.TasksCompanion", "src\Mods.TasksCompanion\Mods.TasksCompanion.csproj", "{6FF68F1B-5744-472E-B864-5BB6A84742FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{17962FE4-CF29-4EBD-932F-AF186167B5AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17962FE4-CF29-4EBD-932F-AF186167B5AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17962FE4-CF29-4EBD-932F-AF186167B5AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17962FE4-CF29-4EBD-932F-AF186167B5AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FF68F1B-5744-472E-B864-5BB6A84742FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF68F1B-5744-472E-B864-5BB6A84742FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF68F1B-5744-472E-B864-5BB6A84742FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF68F1B-5744-472E-B864-5BB6A84742FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

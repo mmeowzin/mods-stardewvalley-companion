@@ -1,0 +1,10 @@
+{
+    "Name": "StardewCompanion.TasksCompanion",
+    "Author": "mmeowzin",
+    "Version": "0.0.1",
+    "Description": "A full tasks list with automatic notifications e customization. Part of the Stardew Companion Suite.",
+    "UniqueID": "mmeowzin.StardewCompanion.TasksCompanion",
+    "EntryDll": "StardewCompanion.Mods.TasksCompanion.dll",
+    "MinimumApiVersion": "4.0.0",
+    "UpdateKeys": []
+}

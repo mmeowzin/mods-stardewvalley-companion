@@ -1,7 +1,7 @@
 ﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
 
-namespace StardewCompanion.Mods.ToDoCompanion.Events.Input;
+namespace StardewCompanion.Mods.TasksCompanion.Events.Input;
 
 internal sealed class ButtonPressedEvent
 {

@@ -1,6 +1,7 @@
-﻿using StardewModdingAPI;
+﻿using StardewCompanion.Mods.TasksCompanion.Configuration;
+using StardewModdingAPI;
 
-namespace StardewCompanion.Mods.ToDoCompanion.Configuration;
+namespace StardewCompanion.Mods.TasksCompanion.Models.Configuration;
 
 internal sealed class ModConfiguration
 {

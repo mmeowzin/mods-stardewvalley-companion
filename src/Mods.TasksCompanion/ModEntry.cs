@@ -1,4 +1,5 @@
-﻿using StardewCompanion.Mods.TasksCompanion.Events.GameLoop;
+﻿using StardewCompanion.Mods.TasksCompanion.Configuration;
+using StardewCompanion.Mods.TasksCompanion.Events.GameLoop;
 using StardewCompanion.Mods.TasksCompanion.Events.Input;
 using StardewCompanion.Mods.TasksCompanion.Events.Player;
 using StardewCompanion.Mods.TasksCompanion.Models.Configuration;
@@ -10,8 +11,6 @@ namespace StardewCompanion.Mods.TasksCompanion;
 
 internal sealed class ModEntry : Mod
 {
-    private readonly bool _trace = false;
-
     public ModConfiguration Configuration { get; private set; }
     public PlayerTasks PlayerTasks { get; set; }
 
@@ -42,11 +41,19 @@ internal sealed class ModEntry : Mod
 
     public void Trace(string message, object data = null)
     {
-        if (!_trace)
+        if (!Configuration.Trace)
             return;
 
         Monitor.Log(
             data == null ? message : new LogMessage(message, data).ToString(),
             LogLevel.Trace);
+    }
+    public void SaveTasks()
+    {
+        var data = PlayerTasks.Sanitize();
+
+        Helper.Data.WriteSaveData(ModKeys.DATA_IDENTIFIER, data);
+
+        Trace("Current player tasks saved.", data);
     }
 }

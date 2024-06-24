@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using StardewCompanion.Mods.TasksCompanion.Models.Inventory;
 using StardewModdingAPI.Events;
+using StardewValley;
 
 namespace StardewCompanion.Mods.TasksCompanion.Events.Player;
 
@@ -60,6 +61,10 @@ internal sealed class InventoryChangedEvent
                     task.Done = true;
 
                     m.Trace($"Task {task.Name} marked as done.");
+
+                    Game1.addHUDMessage(new($"{task.Name} successfully completed.", HUDMessage.achievement_type));
+                    
+                    Game1.playSound("yoba");
                 }
             }
         }

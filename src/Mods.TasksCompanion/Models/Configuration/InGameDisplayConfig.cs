@@ -1,4 +1,4 @@
-﻿namespace StardewCompanion.Mods.TasksCompanion.Configuration;
+﻿namespace StardewCompanion.Mods.TasksCompanion.Models.Configuration;
 
 internal sealed class InGameDisplayConfig
 {

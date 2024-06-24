@@ -1,6 +1,7 @@
 ﻿#pragma warning disable S1075 // URIs should not be hardcoded
 #pragma warning disable S1481 // Unused local variables should be removedg
 #pragma warning disable IDE0059 // Unnecessary assignment of a value
+#pragma warning disable S125 // Sections of code should not be commented out
 
 using System.Collections.Generic;
 using System.IO;
@@ -11,7 +12,11 @@ using StardewCompanion.Mods.TasksCompanion.Models.Tasks;
 
 namespace StardewCompanion.Mods.TasksCompanion;
 
+// m.Monitor.Log($"Player name: {Game1.player.Name}");
+// m.Monitor.Log($"Player's farm name: {Game1.getFarm().Name}");
+
 public static class ModEntryTests
+#pragma warning restore S125 // Sections of code should not be commented out
 {
     public static void Test()
     {
